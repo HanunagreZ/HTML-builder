@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const pathDir = '04-copy-directory/files-copy';
-const dirToCopy = '04-copy-directory/files';
+const pathDir = path.join(__dirname, 'files-copy');
+const dirToCopy = path.join(__dirname, 'files');
 
 fs.access(pathDir, fs.F_OK, (err) => {
   if (err) {
@@ -10,7 +10,6 @@ fs.access(pathDir, fs.F_OK, (err) => {
       if (err) {
         return console.error(err);
       }
-      console.log('Directory created successfully!');
     });
   }
   fs.readdir(pathDir, (err, files) => {
@@ -23,6 +22,5 @@ fs.access(pathDir, fs.F_OK, (err) => {
   });
   fs.cp(dirToCopy, pathDir, { recursive: true }, (err) => {
     if (err) return console.error(err);
-    console.log('Successful copy');
   });
 });

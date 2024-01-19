@@ -1,7 +1,8 @@
 const fs = require('fs');
+const path = require('path');
 
 fs.readdir(
-  './03-files-in-folder/secret-folder',
+  path.join(__dirname, 'secret-folder'),
   { withFileTypes: true },
   (err, files) => {
     console.log('\nSecret-folder files:\n');
@@ -14,7 +15,7 @@ fs.readdir(
         const filename = file.name.split('.')[0];
         const extension = file.name.split('.')[1];
         fs.stat(
-          `./03-files-in-folder/secret-folder/${file.name}`,
+          path.join(__dirname, 'secret-folder', file.name),
           (error, stats) => {
             if (error) {
               console.log(error);
