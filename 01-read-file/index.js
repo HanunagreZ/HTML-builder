@@ -6,4 +6,4 @@ const readStream = fs.createReadStream(txtPath);
 readStream.on('readable', () => {
   console.log(`Inner text: ${readStream.read()}`);
 });
-readStream.on('end', () => {});
+//readStream.on('end', () => {});
